@@ -34,7 +34,7 @@
     "tailwind-merge": "^2.3.0",
     "lucide-react": "^0.378.0",
     "axios": "^1.6.8",
-    "groq-sdk": "^0.4.1",
+    "groq-sdk": "^0.3.3",
     "openai": "^4.52.7",
     "js-cookie": "^3.0.5",
     "dotenv": "^16.4.5",
