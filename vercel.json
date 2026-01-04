@@ -1,9 +1,9 @@
 {
+  "framework": "nextjs",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "nextjs",
-  "nodeVersion": "18.x",
+
   "env": {
     "NEXT_PUBLIC_API_URL": {
       "description": "Public API endpoint for the AI Builder application"
@@ -24,27 +24,20 @@
       "description": "Environment type (development, staging, production)"
     }
   },
-  "envProtected": [
-    "API_SECRET_KEY",
-    "OPENAI_API_KEY",
-    "DATABASE_URL"
-  ],
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_BUILD_TIME": "@now"
-    }
-  },
+
   "functions": {
     "api/**/*.js": {
       "maxDuration": 60
     }
   },
+
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "/api/:path*"
     }
   ],
+
   "redirects": [
     {
       "source": "/old-path",
@@ -52,34 +45,23 @@
       "permanent": true
     }
   ],
+
   "headers": [
     {
       "source": "/api/:path*",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "no-cache, no-store, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
       ]
     },
     {
       "source": "/:path*",
       "headers": [
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
       ]
     }
   ],
-  "regions": ["iad1"],
-  "outputDirectory": ".next"
+
+  "regions": ["iad1"]
 }
